@@ -1,0 +1,50 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-6">
+          <app-seleccionarcliente 
+          [nombre]="clienteseleccionado.Nombre" 
+          (seleccli)="asignarcli($event)"
+          (canceli)="eliminarcliente()"
+          >
+        </app-seleccionarcliente>
+
+        <div class="from-control">
+            <label for="">Precio</label>
+            <select [(ngModel)]="idprecio" (change)="seleccionarPrecio($event.target.value)" class="form-control" name="" id="">
+               <option [value]="null">Seleccione un precio  </option>
+                <option *ngFor="let p of precios " [value]="p.id" >{{p.nombre}}</option>
+            </select>
+        </div>
+        <br>
+        <br>
+        <div class="from-control">
+            <label for="">Fecha Inicio</label>
+            <input class="form-control" [value]="inscripcion.fecha | date" type="text" disabled>
+        </div>
+        <div class="from-control">
+            <label for="">Fecha finaliza</label>
+            <input class="form-control" [value]="inscripcion.fechafinal | date" type="text" disabled>
+        </div>
+        <div class="from-control">
+            <label for="">Subtotal</label>
+            <input class="form-control" [value]="inscripcion.subtotal" date type="number" disabled>
+        </div>
+        <div class="from-control">
+            <label for="">IVA</label>
+            <input class="form-control" [value]="inscripcion.isv" type="number" disabled>
+        </div>
+        <div class="from-control">
+            <label for="">Total</label>
+            <input class="form-control" [value]="inscripcion.total" type="number" disabled>
+        </div>
+        <br>
+        
+        <button class="btn btn-primary" (click)="guardar()">Guardar</button>
+        </div>
+        <div *ngIf="clienteseleccionado.ImgUrl" class="col-sm-6" class="imgcliente">
+            <div>
+                <img [src]="clienteseleccionado.ImgUrl" alt="" class="">
+            </div>
+        </div>
+    </div>
+</div>

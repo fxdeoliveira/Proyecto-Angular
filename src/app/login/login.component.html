@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="text-center">
+        <img src="assets/Boris.png" alt="">
+    </div>
+    
+<form [formGroup]="formulariologin">
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" formControlName="email" aria-describedby="emailHelp">
+      <div *ngIf="formulariologin.controls['email'].invalid && formulariologin.controls['email'].dirty" class="alert alert-danger" role="alert">
+        <span *ngIf="formulariologin.controls['email'].errors.required">El correo es requerido</span> 
+        <span *ngIf="formulariologin.controls['email'].errors.email">El correo no es valido</span> 
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" (keyUp.enter)="ingresar()" class="form-control" formControlName="password" id="password">
+      <div *ngIf="formulariologin.controls['password'].invalid && formulariologin.controls['password'].dirty" class="alert alert-danger" role="alert">
+      <span *ngIf="formulariologin.controls['password'].errors.required"> La contraseña es requerida.</span> 
+      </div>
+    </div>
+   
+    <button type="submit" (click)="ingresar()" [disabled]="!formulariologin.valid" class="btn btn-primary">Login</button>
+  </form>
+  <div *ngIf="!datoscorrectos" class="alert alert-warning" role="alert">
+    {{textoerror}}
+  </div>
+
+  <ngx-spinner 
+  bdColor = "rgba(0, 0, 0, 0.8)"
+   size = "medium" 
+   color = "#f10909"
+    type = "square-jelly-box" 
+    [fullScreen] = "true"
+    >
+    <p style="color: white" > Cargando... </p>
+  </ngx-spinner>
+</div>

@@ -1,0 +1,23 @@
+<div class="containes mt-5" >
+    <h4>Listado de Clientes</h4>
+
+    <form action="" class="">
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="Buscar cliente">
+          </div>
+    </form>
+    <div class="row">
+        <div class="col-sm-3" *ngFor="let cli of Clientes">
+            <div class="card">
+                <img [src]="cli.ImgUrl" class="card-img-top imgcliente">
+                <div class="card-body">
+                  <h5 class="card-title">{{cli.Nombre}} {{cli.Apellido}}</h5>
+                  <a [routerLink]="['/agregar-cliente/', cli.id]" class="card-link">Editar</a>
+                  <a href="#" class="card-link text-danger">Desactivar</a>
+                </div>
+              </div>
+        </div>
+        
+          
+    </div>
+</div>
